@@ -1,0 +1,54 @@
+
+solves simple-model microgel:
+Elastic contribution to free energy
+NVT MC of microgel solution with Hertz and Yukawa potential
+
+issues: 
+	* there are no unit-unit vdws interactions, only unit-solvent
+
+
+*** version 2.2.2:
+    Bug fixed in size histogram
+    size histogram is now: P(R) vs. R=radius
+
+*** version 2.2.1:
+    option "chi" for the FH interaction parameter is now T-dependent chi-->chi*298/T
+
+
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+
+*** version 2.2: # Small changes in the way splines are calculated. 
+    	    	 # A new output file is printed after calculation: "results.dat"
+		 # It calculates adsorption 
+
+*** version 2.1: small changes (mostly in the NVT MC)
+
+*** version 2.0:
+1) Flory-Huggins (chi) parameter options (inputs.in):
+
+chi 0.5
+nipam
+logi 0.2 0.6 35.0 3.0 --> logistic function: bchi_i bchi_f T_pt Delta_T
+no --> bchi=0
+
+2) Microgel is read differently (inputs.in):
+
+Before:
+AA 0.04 72.1 0.1 0.0 1   ! nm, cn, Mw, vol, z, npKas
+
+Now:
+AA 0.04
+72.1 0.1 0.0 1
+
+(There is also a space between types of segment)
+
+3) now the code reads any input name:
+
+example:
+microgels-mc.x input-maa.in
+
+microgels-mc.x  # this will read inputs.in
+
