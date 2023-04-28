@@ -1,0 +1,76 @@
+
+
+###############################
+Monte_Carlo ###################
+###############################
+
+100		! number of particles
+1.0		! density mg/ml
+5000		! # MC steps
+1000		! equil MC
+
+f		! do MC?
+
+
+
+
+###############################
+Environment ###################
+###############################
+
+4.65		! pH
+0.01		! csalt
+25		! temp (C)
+
+0.03		! v_w
+0.03		! v_H30+
+0.03		! v_OH-
+
+0.212		! r_pls (K+) (Marcus 1991)
+0.224		! r_min (Cl-)
+
+1.0		! z_H30+
+-1.0		! z_OH-
+1.0		! z_pls
+-1.0		! z_min
+
+
+
+
+###############################
+Microgel ######################
+###############################
+
+100 1 1		! R_ini, R_fin, DR
+
+2000		! # of chains in microgel
+50		! segments in 1 chain
+2		! # of segment types
+...
+MAA 0.35	! name, %cn
+86.1 0.09 0.0 1	! Mw, vol, z0, npKas
+4.65 -1.      	! pKa1, z1, ...
+no   		! bchi
+.... chi 0.4 (asi se pone) or .. logi chi_i chi_f TpT deltaT
+NIPAm 0.65
+113.2 0.12 0. 0
+nipam
+
+
+
+
+
+
+###############################
+Adsorbates ####################
+###############################
+
+0		! # of adsorbates
+
+PAH             ! adsorbate name
+1.0d-6            ! concentration (M)
+1               ! # of unit types
+AH 150 0.07 0. 1 ! name, # units, volume, z0, # pKas
+8.5 1.0	       ! pKa1, z1,...
+
+

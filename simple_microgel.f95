@@ -49,6 +49,7 @@ contains
 
     logical:: first
 
+    integer:: iostat_adsor
 
 
 
@@ -56,7 +57,7 @@ contains
     
 
     open(file="degree.dat",unit=7)
-    open(file="adsor.dat",unit=3)
+    
     
     open(file="DF-Rmg.dat",unit=2)
     write(2,*)"### 1. Rmg ### 2. bFtot/(4/3*pi*R0^3) ### 3." ,&
@@ -79,7 +80,7 @@ contains
 
     nRs=int(abs(Rmg_min-Rmg_max)/abs(DRmg))+1
 
-
+    if (nads>0) open(file="adsor.dat",unit=3, iostat = iostat_adsor)
     if (nads>0) then
        allocate(tmp(nRs,5))
     else
@@ -183,7 +184,8 @@ contains
           tmp(iR,4)=kappa
           
           if (nads>0) tmp(iR,5)=(ads%rho-ads%rhobulk)*4d0*pi/3d0*Rmg**3
-          write(3,*)Rmg, tmp(iR,5)
+
+          if (nads>0) write(3,*)Rmg, tmp(iR,5)
 
   
        endif
@@ -241,12 +243,12 @@ contains
 
 
 
-
+    if (iostat_adsor == 0) close(3)
 
 
     close(2)
     close(9)
-    close(3)
+    !close(3)
     close(7)
 
 
