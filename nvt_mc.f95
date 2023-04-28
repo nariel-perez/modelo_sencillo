@@ -51,7 +51,7 @@ contains
     character(8):: chx8
     character(12):: chx12,chx12b
 
-
+    integer:: ratio2
     
     
 
@@ -190,8 +190,8 @@ contains
 
     write(chx8,"(f8.4)")box
     write(*,'(4xa,1xa)')"box*:",trim(adjustl(chx8))
-
-
+   
+    
 
     write(*,'(/4xa/)')"...starting MC simulation:"
 
@@ -242,7 +242,7 @@ contains
     allocate(ha(nha))
     ha=0d0
     
-
+    ratio2 = 0
     do imc=1,max_mc ! loop over the # of MC steps
        
        do ip=1,Np ! MC step --> Np attempts to move randomly chosen particles
@@ -318,7 +318,7 @@ contains
                 a(i)=anew
                 q(i)=qnew
                 ia(i)=ianew
-
+                ratio2 = ratio2 +1
              elseif (dexp(-duf)>rn) then
                 u=u+deltau
                 bf=bf+df
@@ -329,6 +329,7 @@ contains
                 a(i)=anew
                 q(i)=qnew
                 ia(i)=ianew
+                ratio2 = ratio2 +1
              endif
           endif
 
@@ -529,7 +530,7 @@ contains
     enddo
     close(121)
 
-
+    write(*,*)'aceptados:',ratio2
 
     
 !!!................................................
@@ -724,7 +725,7 @@ contains
     close(2121)
 
 
-
+    
 
 
 

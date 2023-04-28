@@ -195,7 +195,7 @@ contains
 
     lb_sol=cbjrrm/temp/eps_sol     ! Bjerrum length in nm
 
-
+    
 
 
 
@@ -733,7 +733,8 @@ contains
 
     kappa_sol=4d0*pi*lb_sol*kappa_sol/vsol
     kappa_sol=sqrt(kappa_sol)
-
+    
+    
 
 
 

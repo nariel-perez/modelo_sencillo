@@ -28,7 +28,7 @@ contains
   
   
   
- 
+
   
   
   
@@ -55,12 +55,12 @@ contains
 
     
 
-    
+    open(file="degree.dat",unit=7)
     open(file="adsor.dat",unit=3)
     
     open(file="DF-Rmg.dat",unit=2)
-    write(2,*)"### 1. Rmg ### 2. bFtot/(4/3*pi*R0^3) ### 3. bFmt/(4/3*pi*R0^3)"&
-         " ### 4. bFel/(4/3*pi*R0^3)"
+    write(2,*)"### 1. Rmg ### 2. bFtot/(4/3*pi*R0^3) ### 3." ,&
+         "bFmt/(4/3*pi*R0^3) ### 4. bFel/(4/3*pi*R0^3)"
 
 
 
@@ -145,6 +145,7 @@ contains
              write(9,'(4xa,i2,":"1x,"f_q=",1PE10.3E2,1x"- f_id=",1PE10.3E2)')&
                   trim(adjustl(poly%cgu(ityp)%nm)),ipK,&
                   poly%cgu(ityp)%f(ipK),poly%cgu(ityp)%fi(ipK)
+             write(7,*) Rmg, poly%cgu(ityp)%f(ipK)
           enddo
        enddo
 
@@ -246,7 +247,7 @@ contains
     close(2)
     close(9)
     close(3)
- 
+    close(7)
 
 
 
@@ -483,6 +484,7 @@ contains
 
     kappa=4d0*pi*lb_sol*kappa/vsol
     kappa=sqrt(kappa)
+    
 
     
 
