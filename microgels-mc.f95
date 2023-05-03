@@ -74,7 +74,7 @@ contains
 
     iamin=minloc(F_mg,1)
     a0=R_mg(iamin)
-
+    
      
     q=Q_mg(iamin)
 
@@ -89,10 +89,11 @@ contains
     write(chx12b,"(f8.1)")2d0*a0
     write(*,'(4xa,1xa,1xa)')"MG radius:",trim(adjustl(chx12)),"nm"
     write(*,'(4xa,1xa,1xa/)')"diameter:",trim(adjustl(chx12b)),"nm"
-
+    
     
     write(outfi,*)"Radius=",a0
     write(outfi,*)"zeta_pot=",zeta
+    !write(outfi,*)"f_rmin=",poly%cgu(ityp)%f(ipK)DFmg(iamin,3)
 
     
     write(chx12,"(f10.3)")zeta

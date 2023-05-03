@@ -51,7 +51,7 @@ contains
 
     integer:: iostat_adsor
 
-
+    Real(8), allocatable::degree(:,:)
 
 
     
@@ -87,7 +87,7 @@ contains
        allocate(tmp(nRs,4))
     endif
     
-
+    allocate(degree(nRs,1))
     iR=0
 
 
@@ -169,7 +169,15 @@ contains
        if (info==1) then
 
           iR=iR+1
-       
+
+
+          do ityp=1,poly%ntyp
+             do ipK=1,poly%cgu(ityp)%npKs
+                degree(iR,1) = poly%cgu(ityp)%f(ipK)
+                write(*,*)iR, degree(iR,1) 
+             enddo
+          enddo
+          
 
           write(9,'(/4x,"F_tot/(4*pi*R0^3)=",1PE11.4E2,1x"kT")')Ftot
        

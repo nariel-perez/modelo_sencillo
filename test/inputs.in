@@ -41,7 +41,7 @@ Environment ###################
 Microgel ######################
 ###############################
 
-100 1 1		! R_ini, R_fin, DR
+1 100 1		! R_ini, R_fin, DR
 
 2000		! # of chains in microgel
 50		! segments in 1 chain
