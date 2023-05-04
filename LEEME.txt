@@ -55,3 +55,4 @@ microgels-mc.x  # this will read inputs.in
 4) If there are adsorbates write the adsorption as a function of radius to a file 'adsor.dat'
 Implemented for an adsorbate. It is necessary to correct for more than one.
 
+5) fixing degree of charge in a0.
