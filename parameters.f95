@@ -10,7 +10,7 @@ module parameters
   real(8),parameter:: Na=0.602214,pi=acos(-1.0d0),pKw=14d0
   real(8),parameter:: cbjrrm=16710.075,eps_sol=78.5
 
-  real(8),allocatable:: R_mg(:),F_mg(:),Q_mg(:),kappa_mg(:),gamma_ads(:)
+  real(8),allocatable:: R_mg(:),F_mg(:),Q_mg(:),kappa_mg(:),gamma_ads(:), degree(:)
 
 
   type cg_unit

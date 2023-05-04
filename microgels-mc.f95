@@ -66,7 +66,7 @@ contains
     integer,parameter:: outfi=85
     
     real(8):: a0,q,qnet,kappa,zeta
-    character(12):: chx12,chx12b
+    character(12):: chx12,chx12b, chx12c
     
     
 
@@ -87,13 +87,15 @@ contains
         
     write(chx12,"(f8.1)")a0
     write(chx12b,"(f8.1)")2d0*a0
+    write(chx12c,"(f8.3)")degree(iamin)
     write(*,'(4xa,1xa,1xa)')"MG radius:",trim(adjustl(chx12)),"nm"
     write(*,'(4xa,1xa,1xa/)')"diameter:",trim(adjustl(chx12b)),"nm"
-    
+    write(*,'(4xa,1xa,1xa/)')"degree in a0:",trim(adjustl(chx12c))
     
     write(outfi,*)"Radius=",a0
     write(outfi,*)"zeta_pot=",zeta
-    !write(outfi,*)"f_rmin=",poly%cgu(ityp)%f(ipK)DFmg(iamin,3)
+    write(outfi,*)"f_rmin=",degree(iamin)
+   
 
     
     write(chx12,"(f10.3)")zeta

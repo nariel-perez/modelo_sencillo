@@ -51,7 +51,7 @@ contains
 
     integer:: iostat_adsor
 
-    Real(8), allocatable::degree(:,:)
+    Real(8), allocatable::degree_tmp(:)
 
 
     
@@ -87,7 +87,7 @@ contains
        allocate(tmp(nRs,4))
     endif
     
-    allocate(degree(nRs,1))
+    allocate(degree_tmp(nRs))
     iR=0
 
 
@@ -173,8 +173,7 @@ contains
 
           do ityp=1,poly%ntyp
              do ipK=1,poly%cgu(ityp)%npKs
-                degree(iR,1) = poly%cgu(ityp)%f(ipK)
-                write(*,*)iR, degree(iR,1) 
+                degree_tmp(iR) = poly%cgu(ityp)%f(ipK)
              enddo
           enddo
           
@@ -185,7 +184,7 @@ contains
           write(2,*)Rmg,Ftot,Fmt,Fel
           
 
-
+          
           tmp(iR,1)=Rmg
           tmp(iR,2)=Ftot
           tmp(iR,3)=poly%rhoq*4d0*pi/3d0*Rmg**3/vsol
@@ -224,7 +223,7 @@ contains
 
 
     allocate(auxR(n_spl),R_mg(n_spl),F_mg(n_spl),Q_mg(n_spl),kappa_mg(n_spl))
-    
+    allocate(degree(n_spl))
     
 
     call akima(nRs,tmp(:,1),tmp(:,2),n_spl,R_mg,F_mg) ! Free energy spline
@@ -232,6 +231,8 @@ contains
     call akima(nRs,tmp(:,1),tmp(:,3),n_spl,auxR,Q_mg) ! polymer charge spline
 
     call akima(nRs,tmp(:,1),tmp(:,4),n_spl,auxR,kappa_mg) ! kappa spline
+
+    call akima(nRs,tmp(:,1),degree_tmp(:),n_spl,auxR,degree) ! kappa spline
 
     
 
